@@ -5,43 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Day Interactive Web App</title>
     <style>
-        body { font-family: Arial, sans-serif; background-color: #f8e2e2; color: #333; }
-        .header { text-align: center; padding: 20px; }
-        .quiz, .game, .love-letter, .music { margin: 20px auto; padding: 20px; border: 1px solid #ff6f61; border-radius: 10px; background-color: #fff; width: 90%; max-width: 600px; }
-        .quiz button, .game button { padding: 10px 15px; background-color: #ff6f61; border: none; color: white; cursor: pointer; }
-        .quiz button:hover, .game button:hover { background-color: #ff3b3b; }
+        body {
+            background-color: #f8d3d3;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #ff6e6e;
+            border: none;
+            color: white;
+            cursor: pointer;
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .game {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        .heart {
+            height: 50px;
+            width: 50px;
+            background-color: red;
+            transform: rotate(45deg);
+            position: relative;
+        }
+        .heart:before,
+        .heart:after {
+            content: "";
+            background-color: red;
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            position: absolute;
+        }
+        .heart:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart:after {
+            left: 25px;
+            top: 0;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Valentine's Day Interactive Web App</h1>
+    <h1>Happy Valentine's Day!</h1>
+    <p>Welcome to the interactive web app!</p>
+    <button class="button" onclick="startQuiz()">Take the Love Quiz</button>
+    <button class="button" onclick="runAway()">Run Away!</button>
+    <div class="game" onclick="catchHeart()">
+        <div class="heart"></div>
     </div>
-
-    <div class="quiz">
-        <h2>Valentine's Quiz</h2>
-        <p>Test your love knowledge!</p>
-        <p>Question: What is the symbol of love?</p>
-        <button onclick="alert('Correct! It's a heart!')">Answer</button>
-    </div>
-
-    <div class="game">
-        <h2>Heart Catching Game</h2>
-        <p>Catch the falling hearts!</p>
-        <button>No button - Run Away!</button>
-    </div>
-
-    <div class="love-letter">
-        <h2>Write a Love Letter</h2>
-        <textarea rows="5" cols="30" placeholder="Write your love letter here..."></textarea>
-    </div>
-
-    <div class="music">
-        <h2>Music Placeholder</h2>
-        <p>Play your customized love song:</p>
-        <audio controls>
-            <source src="your_song.mp3" type="audio/mpeg">
-            Your browser does not support the audio tag.
-        </audio>
-    </div>
+    <p id="result"></p>
+    <script>
+        function startQuiz() {
+            alert('Starting the Love Quiz!');
+        }
+        function runAway() {
+            alert('You ran away!');
+        }
+        function catchHeart() {
+            let result = document.getElementById('result');
+            result.innerHTML = 'You caught a heart! 💖';
+        }
+    </script>
 </body>
 </html>
